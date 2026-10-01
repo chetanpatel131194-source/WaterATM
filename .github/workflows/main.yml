@@ -16,6 +16,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Accept Android Licenses
+        run: yes | sdkmanager --licenses
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -32,7 +35,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Build APK
-        run: echo "y" | flet build apk
+        run: yes | flet build apk
 
       - name: Upload APK File
         uses: actions/upload-artifact@v4
